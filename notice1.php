@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +14,7 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,23 +26,15 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: BizLand - v1.0.1
-  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
-
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
         <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">prajval@gmail.com</a>
-		 <i class="icofont-login"></i> <a href="login.php">Admin Login</a>
+        <i class="icofont-login"></i> <a href="login.php">Admin Login</a>
         <i class="icofont-phone"></i> +91 9665656267
       </div>
       <div class="social-links">
@@ -51,7 +42,7 @@
         <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
         <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
         <a href="#" class="skype"><i class="icofont-skype"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
       </div>
     </div>
   </div>
@@ -59,151 +50,134 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="index.html"><span>NMS</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt=""></a>-->
-
+      <h1 class="logo mr-auto"><a href="index.php"><span>NMS</span></a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li><a href="index.php">Home</a></li>
-          <li><a href="Notice2.php">View Notice</a></li>
-          <li><a href="feed1.php"> View Feedback</a></li>
+          <li><a href="Notice1.php">View Notice</a></li>
+          <li><a href="feed1.php">View Feedback</a></li>
           <li><a href="about.php">About Us</a></li>
           <li><a href="Contact.php">Contact Us</a></li>
-
         </ul>
-      </nav><!-- .nav-menu -->
-
+      </nav>
     </div>
   </header><!-- End Header -->
 
-  
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1> <span>Notice Board</spa>
-      </h1>
- 
-      </div>
+    <div class="container">
+      <h1><span>Notice Board</span> Management</h1>
+      <p class="mt-3 text-dark">Manage all notices from this admin dashboard</p>
     </div>
   </section><!-- End Hero -->
-  
-  <html>
-  <div style="margin-right:10%;margin-left:10%">
-  <style>
- 
-input[type=submit]
-{
-background-color:blue;
-color:white;
-border:none;
-width:100%;
-}
-body
-{
-margin-bottom:10%;
-}
-table
-{
-width: 100%;
-}
-th
-{
-text-align:center;
-height: 50px;
-color:blue;
-background-color:lightblue;
-}
-table, td, th 
-{
-border: 1px solid blue;
-}
-td
-{
-padding-left:5px;
-}
-</style>
-<title>Notices</title>
- 
-<body >
 
-<div align="center">
-<br/><br/>
+  <main id="main">
+    <section class="admin-notice-section">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <h2 class="admin-section-title">Manage Notices</h2>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <a href="Insert.php" class="btn btn-primary"><i class="icofont-plus-circle mr-2"></i>Add New Notice</a>
+          </div>
+        </div>
+        
+        <div class="row mb-4">
+          <div class="col-lg-12">
+            <div class="card shadow-sm">
+              <div class="card-body p-0">
+                <div class="admin-filter-bar p-3 bg-light border-bottom">
+                  <div class="row">
+                    <div class="col-md-4 mb-2 mb-md-0">
+                      <select class="form-control" id="noticeFilter" onchange="filterNotices()">
+                        <option value="all">All Categories</option>
+                        <option value="academic">Academic</option>
+                        <option value="administrative">Administrative</option>
+                        <option value="events">Events</option>
+                        <option value="examination">Examination</option>
+                        <option value="general">General</option>
+                      </select>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="searchNotice" placeholder="Search notices..." onkeyup="searchNotices()">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="button"><i class="icofont-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-<br/> 
-	
-	<a href="Insert.php"><input type='submit' Style='width:20%;'s value='Insert New Notice' name='insert'></a>
+                <div class="table-responsive">
+                  <table class="table table-hover admin-notice-table mb-0" id="noticesTable">
+                    <thead class="thead-light">
+                      <tr>
+                        <th width="20%">Title</th>
+                        <th width="35%">Description</th>
+                        <th width="15%">From</th>
+                        <th width="10%">Category</th>
+                        <th width="10%">Date</th>
+                        <th width="10%" class="text-center">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      error_reporting(0);
+                      $con=mysqli_connect("127.0.0.1","root","","nms");
 
- 
+                      if($con) {
+                        $query = "SELECT * FROM notice ORDER BY featured DESC, date DESC";
+                        $res = mysqli_query($con, $query);
 
-<br/><br/>
-<?php
- error_reporting(0);
-$con=mysqli_connect("127.0.0.1","root","","nms"); 
-
-
-
-if(1)
-{
-	$query2= "select * from notice";
-	$res=mysqli_query($con, $query2);
-
-
-	echo "
-	
-	<table border='1'>
-	 
-	<th>Title</th>
-	<th>Description</th>
-	<th>From</th>
-	<th>EDIT</th>
-	<th>DELETE</th>
-	";
-	
-	
-	
-	
-
-	while($rony=mysqli_fetch_array($res))
-	{
-		
- 
-    $a=$rony['Title'];
-	$b=$rony['Desc'];
-	$c=$rony['From'];
- 
-	
-	echo "
-	
-	<tr>
-	<td>$a</td>
-	<td>$b</td>
-	<td>$c</td>
-	 
-	";
-	
-	echo "<td><a href='Edit.php?ti=$a'> <input type='submit' value='Edit' name='edit'></a></td>";
-	echo "<td><a href='Delete.php?ti=$a'><input type='submit' value='Delete' name='delete'></a></td>";
-	
-	echo "</tr>";
-
-	
-	}
-		
-	echo "</table></br>";	
-}
-else
-echo "no record found";															
-
-
-?>
-
-</div>
-</body>
-</html>
-  
-  </footer><!-- End Footer -->
+                        if(mysqli_num_rows($res) > 0) {
+                          while($notice = mysqli_fetch_array($res)) {
+                            $title = $notice['Title'];
+                            $description = substr($notice['Desc'], 0, 100) . (strlen($notice['Desc']) > 100 ? '...' : '');
+                            $from = $notice['From'];
+                            $category = isset($notice['category']) ? $notice['category'] : 'general';
+                            $date = isset($notice['date']) ? date('d M Y', strtotime($notice['date'])) : '-';
+                            $isFeatured = isset($notice['featured']) && $notice['featured'] == 1;
+                            $attachment = isset($notice['attachment']) && !empty($notice['attachment']);
+                            
+                            echo '<tr class="notice-row" data-category="'. $category .'">
+                              <td>'. ($isFeatured ? '<span class="badge badge-danger mr-1">Important</span>' : '') . 
+                                  ($attachment ? '<i class="icofont-attachment text-secondary mr-1"></i>' : '') . 
+                                  htmlspecialchars($title) .'</td>
+                              <td>'. htmlspecialchars($description) .'</td>
+                              <td>'. htmlspecialchars($from) .'</td>
+                              <td><span class="badge badge-info">'. ucfirst($category) .'</span></td>
+                              <td>'. $date .'</td>
+                              <td class="text-center">
+                                <div class="btn-group btn-group-sm">
+                                  <a href="Edit.php?ti='. urlencode($title) .'" class="btn btn-primary" title="Edit">
+                                    <i class="icofont-edit"></i>
+                                  </a>
+                                  <a href="#" onclick="confirmDelete(\'' . htmlspecialchars($title) . '\')" class="btn btn-danger" title="Delete">
+                                    <i class="icofont-trash"></i>
+                                  </a>
+                                </div>
+                              </td>
+                            </tr>';
+                          }
+                        } else {
+                          echo '<tr><td colspan="6" class="text-center py-4">No notices found.</td></tr>';
+                        }
+                      } else {
+                        echo '<tr><td colspan="6" class="text-center py-4">Failed to connect to database.</td></tr>';
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
@@ -222,8 +196,50 @@ echo "no record found";
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
- 
-</body>
 
+  <script>
+    // Filter notices by category
+    function filterNotices() {
+      const category = document.getElementById('noticeFilter').value;
+      const rows = document.querySelectorAll('#noticesTable tbody tr.notice-row');
+      
+      rows.forEach(row => {
+        if (category === 'all' || row.dataset.category === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+    
+    // Search notices
+    function searchNotices() {
+      const input = document.getElementById('searchNotice');
+      const filter = input.value.toUpperCase();
+      const rows = document.querySelectorAll('#noticesTable tbody tr.notice-row');
+      
+      rows.forEach(row => {
+        const cells = row.getElementsByTagName('td');
+        let found = false;
+        
+        for (let i = 0; i < cells.length - 1; i++) {
+          const text = cells[i].textContent || cells[i].innerText;
+          if (text.toUpperCase().indexOf(filter) > -1) {
+            found = true;
+            break;
+          }
+        }
+        
+        row.style.display = found ? '' : 'none';
+      });
+    }
+    
+    // Delete confirmation
+    function confirmDelete(title) {
+      if (confirm('Are you sure you want to delete the notice: "' + title + '"?\nThis action cannot be undone.')) {
+        window.location.href = 'Delete.php?ti=' + encodeURIComponent(title);
+      }
+    }
+  </script>
+</body>
 </html>
- 
