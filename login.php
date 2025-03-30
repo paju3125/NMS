@@ -1,3 +1,12 @@
+<?php
+require_once 'includes/session.php';
+
+// If already logged in, redirect to admin dashboard
+if (isLoggedIn()) {
+    header("Location: admin/dashboard.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +14,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin Login </title>
+  <title>Admin Login - Notice Management System</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -38,7 +47,7 @@
     <div class="container d-flex">
       <div class="contact-info mr-auto">
         <i class="icofont-envelope"></i> <a href="mailto:prathameshchaudhary7122@gmail.com">prajval@gmail.com</a>
-		 <i class="icofont-login"></i> <a href="login6.php">Admin Login</a>
+		 <i class="icofont-login"></i> <a href="login.php">Admin Login</a>
         <i class="icofont-phone"></i>+91 9665656267
       </div>
       <div class="social-links">
@@ -76,187 +85,60 @@
   
  
   
- <?php
-error_reporting(0);
-$con=mysqli_connect("localhost","root","","nms");
 
-if(isset($_POST['login']))
-{
-	
-	$e=$_POST['email'];
-	$f=$_POST['password'];
-	
-	$q="select * from admin where Email='$e' and Password='$f'";
-	//echo $q;
-	$row=mysqli_query($con,$q);
-	
-	if(mysqli_num_rows($row)==1)
-	{
-		echo"<script>alert('Admin Login Successfully done...');window.location.href='notice1.php';</script>";
-	}
-	else
-	{
-		echo"<script>alert('Login Failed...');window.location.href='login.php';</script>";	
-	}
-}
 
-?>
-<html>
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<style>
-body
-{
-	margin-top:10%;
-}
-.register{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 3%;
-    padding: 3%;
-}
-.register-left{
-    text-align: center;
-    color: #fff;
-    margin-top: 4%;
-}
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 60%;
-    background: #f8f9fa;
-    font-weight: bold;
-    color: #383d41;
-    margin-top: 30%;
-    margin-bottom: 3%;
-    cursor: pointer;
-}
-.register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
-}
-.register-left img{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    width: 25%;
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 1s infinite  alternate;
-}
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
-}
-.register .register-form{
-    padding: 10%;
-    margin-top: 10%;
-}
-.btnRegister{
-    float: right;
-    margin-top: 10%;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: #0062cc;
-    color: #fff;
-    font-weight: 600;
-    width: 50%;
-    cursor: pointer;
-}
-.register .nav-tabs{
-    margin-top: 3%;
-    border: none;
-    background: #0062cc;
-    border-radius: 1.5rem;
-    width: 28%;
-    float: right;
-}
-.register .nav-tabs .nav-link{
-    padding: 2%;
-    height: 34px;
-    font-weight: 600;
-    color: #fff;
-    border-top-right-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
-}
-.register .nav-tabs .nav-link:hover{
-    border: none;
-}
-.register .nav-tabs .nav-link.active{
-    width: 100px;
-    color: #0062cc;
-    border: 2px solid #0062cc;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
-.register-heading{
-    text-align: center;
-    margin-top: 8%;
-    margin-bottom: -15%;
-    color: #495057;
-}
-</style>
-<form method="POST">
-<div class="container register">
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                        <h3>Welcome</h3>
-                        <p>Login into the database to access the notices !</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin Login - Notice Management System</title>
+    <!-- Include your CSS files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center" style="height: 100vh">
+        <div class="row justify-content-center w-100">
+                <div class="card col-md-6">
+                    <div class="card-header">
+                        <h3 class="text-center">Admin Login</h3>
                     </div>
-                    <div class="col-md-9 register-right">
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Admin</a>
-                            </li>
-                        
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                             <h3 class="register-heading">Login as a Admin</h3>
-                                <div class="row register-form">
-                                    <div class="col-md-6">
-									  
-                                        <div class="form-group">
-										 
-                                            <input type="email" class="form-control" name="email" placeholder="Your Email *" value="" required />
-                                        </div>
-                                       
-                                       
-                                       
-                                    </div>
-                                    <div class="col-md-6">
-                                        
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" name="password" placeholder="Password *" value="" required  />
-                                        </div>
-                                      
-                                   
-                                        <input type="submit" class="btnRegister"  name="login" value="Login" >
-                                    </div>
-                                </div>
+                    <div class="card-body">
+                        <?php if (isset($_SESSION['login_error'])): ?>
+                            <div class="alert alert-danger">
+                                <?php 
+                                    echo $_SESSION['login_error']; 
+                                    unset($_SESSION['login_error']);
+                                ?>
                             </div>
-                     
+                        <?php endif; ?>
+                        
+                        <form action="login_process.php" method="post">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        
+                        <div class="mt-3 text-center">
+                            <a href="index.php">Back to Home</a>
                         </div>
                     </div>
                 </div>
+        </div>
+    </div>
 
-            </div>
-			</form>
-			
-			</html>
+    <!-- Include your JS files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 			
 			
 			

@@ -4,11 +4,11 @@
 $con=mysqli_connect("localhost","root","","nms"); 
 
 
-	$a= $_GET['ti'];
+	$a= $_GET['id'];
 	 
 	
 	
-	$query2= "delete from notice where Title='$a'";
+	$query2= "delete from notice where id='$a'";
 	mysqli_query($con, $query2);
 
 	
@@ -27,8 +27,8 @@ $con=mysqli_connect("localhost","root","","nms");
   </div>
   <script>
 	setTimeout(function() {
-	  window.location.href="notice1.php";
-	}, 3000);
+	  window.location.href="manage_notices.php";
+	}, 1000);
   </script>';
 	
 	

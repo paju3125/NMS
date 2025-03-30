@@ -4,11 +4,11 @@
 $con=mysqli_connect("localhost","root","","nms"); 
 
 
-	$a= $_GET['em'];
+	$a= $_GET['id'];
 	 
 	
 	
-	$query2= "delete from feed where Email='$a'";
+	$query2= "delete from feed where id='$a'";
 	mysqli_query($con, $query2);
 
 	
@@ -27,8 +27,8 @@ $con=mysqli_connect("localhost","root","","nms");
   </div>
   <script>
 	setTimeout(function() {
-	  window.location.href="feed1.php";
-	}, 3000);
+	  window.location.href="view_feedback.php";
+	}, 1000);
   </script>';
 	
 	

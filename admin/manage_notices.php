@@ -1,3 +1,13 @@
+<?php
+require_once '../includes/session.php';
+
+// Check if user is logged in, redirect to login if not
+requireLogin();
+
+// Rest of your admin dashboard code
+// ...
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,61 +20,42 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/gp.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/gp.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-    <div class="container d-flex">
-      <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">prajval@gmail.com</a>
-        <i class="icofont-login"></i> <a href="login.php">Admin Login</a>
-        <i class="icofont-phone"></i> +91 9665656267
-      </div>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="skype"><i class="icofont-skype"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
-      </div>
-    </div>
-  </div>
-
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+  <header id="header" class="fixed-top " style="top: 0;">
     <div class="container d-flex align-items-center">
-      <h1 class="logo mr-auto"><a href="index.php"><span>NMS</span></a></h1>
+      <h1 class="logo mr-auto"><a href="dashboard.php"><span>NMS</span></a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.php">Home</a></li>
-          <li><a href="Notice1.php">View Notice</a></li>
-          <li><a href="feed1.php">View Feedback</a></li>
-          <li><a href="about.php">About Us</a></li>
-          <li><a href="Contact.php">Contact Us</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+          <li  class="active"><a href="manage_notices.php">Manage Notice</a></li>
+          <li><a href="view_feedback.php">View Feedback</a></li>
+          <li><a href="../logout.php">Logout</a></li>
         </ul>
       </nav>
     </div>
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
+  <section id="hero" class="d-flex align-items-center"  style="height: fit-content;">
     <div class="container">
       <h1><span>Notice Board</span> Management</h1>
       <p class="mt-3 text-dark">Manage all notices from this admin dashboard</p>
@@ -133,6 +124,7 @@
 
                         if(mysqli_num_rows($res) > 0) {
                           while($notice = mysqli_fetch_array($res)) {
+                            $id = $notice['id'];
                             $title = $notice['Title'];
                             $description = substr($notice['Desc'], 0, 100) . (strlen($notice['Desc']) > 100 ? '...' : '');
                             $from = $notice['From'];
@@ -151,10 +143,10 @@
                               <td>'. $date .'</td>
                               <td class="text-center">
                                 <div class="btn-group btn-group-sm">
-                                  <a href="Edit.php?ti='. urlencode($title) .'" class="btn btn-primary" title="Edit">
+                                  <a href="Edit.php?id='. urlencode($id) .'" class="btn btn-primary" title="Edit">
                                     <i class="icofont-edit"></i>
                                   </a>
-                                  <a href="#" onclick="confirmDelete(\'' . htmlspecialchars($title) . '\')" class="btn btn-danger" title="Delete">
+                                  <a href="#" onclick="confirmDelete(\'' . htmlspecialchars($id) . '\', \'' . htmlspecialchars($title) . '\')" class="btn btn-danger" title="Delete">
                                     <i class="icofont-trash"></i>
                                   </a>
                                 </div>
@@ -183,19 +175,19 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 
   <script>
     // Filter notices by category
@@ -235,9 +227,9 @@
     }
     
     // Delete confirmation
-    function confirmDelete(title) {
+    function confirmDelete(id, title) {
       if (confirm('Are you sure you want to delete the notice: "' + title + '"?\nThis action cannot be undone.')) {
-        window.location.href = 'Delete.php?ti=' + encodeURIComponent(title);
+        window.location.href = 'Delete.php?id=' + encodeURIComponent(id);
       }
     }
   </script>

@@ -104,6 +104,22 @@
         </div>
 
         <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="notice.php">View Notice Board</a></h4>
+              <p>Here you can see all Notice published by SCOEA  </p>
+        
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="https://www.scoea.org/">SCOEA</a></h4>
+              <p>Here you can see information about SCOEA </p>
+            </div>
+          </div>
+          
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
@@ -112,27 +128,6 @@
 			
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="notice.php">View Notice Board</a></h4>
-              <p>Here you can see all Notice publish by GPAN  </p>
-			  
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="http://gpnagar.ac.in/">GPAN</a></h4>
-              <p>Here you can see information about GPAN </p>
-            </div>
-          </div>
-
-          
-
-     
         </div>
 
       </div>
@@ -264,7 +259,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>Government Polytechnic ,<br>Burudgaon road,Ahmednagar</p>
+              <p>Shri Chhatrapati Shivaji Maharaj College of Engineering ,<br>Survey no. 162 & 163, Nepti, Nagar-Kalyan Road, Ahmednagar - 414005 (Maharashtra)</p>
             </div>
           </div>
 
@@ -272,7 +267,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>prathamesh@gmail.com</p>
+              <p>purvagandhi@gmail.com</p>
             </div>
           </div>
 
@@ -280,7 +275,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+91 7666878546 <br>+91 9284240426 <br>+91 9665656267</p>
+              <p>+91 9665656267</p>
 			  
             </div>
           </div>

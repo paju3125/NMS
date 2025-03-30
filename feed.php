@@ -177,7 +177,7 @@
     $c = $_POST['rating'];
     $d = $_POST['feed'];
 
-    $q = "insert into feed values ('$a','$b',$c,'$d')";
+    $q = "insert into feed (Name, Email, Rating, Text) values ('$a','$b',$c,'$d')";
     
     if(mysqli_query($con, $q)) {
       // Show a more stylish success message
@@ -197,7 +197,7 @@
       <script>
         setTimeout(function() {
           window.location.href="index.php";
-        }, 3000);
+        }, 2000);
       </script>';
     }
   }
